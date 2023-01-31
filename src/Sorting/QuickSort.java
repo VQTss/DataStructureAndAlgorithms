@@ -6,11 +6,12 @@ public class QuickSort {
 
     static  void quickSort(int []a , int L , int R){
 
+        // Điều kiện dừng
         if (L >=  R) return;
         // b1 . Chọn khóa
         int key = a[(L+R)/2];
         // b2 . phân bố mảng theo khóa
-        int k = partion(a,L ,R,key);
+        int k = partion(a,L ,R,key); // tìm vị trí để tiếp tục chia mảng ra
         // b3  chia đôi mảng -> lặp lại
         quickSort(a,L, k-1);
         quickSort(a,k,R);
@@ -20,9 +21,9 @@ public class QuickSort {
         int iL = L;
         int iR = R;
         while (iL <= iR){
-            while (a[iL] < key) iL++;
-            while (a[iR] > key) iR--;
-
+            while (a[iL] < key) iL++; // tăng iL để tìm phần tử không đúng ví : có nghĩa là tìm phần tử >= key
+            while (a[iR] > key) iR--; // giảm iR để tìm phần không đúng vị trí : có nghĩa là tìm phần tử <= key
+            // đổi 2 phần tử đang đứng không đúng vị trí
             if (iL <= iR){
                 int temp = a[iL];
                 a[iL] = a[iR];
