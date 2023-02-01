@@ -15,19 +15,20 @@ public class MergeSort {
         // Trường hợp tổng quát
 
         // Chia ra
+        // chia ra thành có mảng nhỏ hơn
         int k = (L+R)/2;
         int[] a1 = mergeSort(a,L,k);
         int[] a2 = mergeSort(a,k+1,R);
 
         // Trộn vào
-
+        // trộn 2 mảng a1 và a2
         int[] result = merge(a1,a2);
         return  result;
     }
 
     private static int[] merge(int[] a1, int[] a2) {
         int n  = a1.length + a2.length;
-        int[] result = new int[n];
+        int[] result = new int[n]; // tạo mảng mới có số phần tử bằng với số phần của a1 và a2
         int i = 0;  // index of array result
         int i1 = 0; // index of a1
         int i2 = 0; // index of a2
@@ -38,12 +39,12 @@ public class MergeSort {
                     result[i] = a1[i1];
                     i++;
                     i1++;
-                }else {
+                }else { // phần tử của mảng a2 nhỏ hơn
                     result[i] = a2[i2];
                     i++;
                     i2++;
                 }
-            }else{
+            }else{ // a1 rỗng or a2 rỗng
                 if (i1 < a1.length){
                     result[i] = a1[i1];
                     i++;
